@@ -1,12 +1,12 @@
 
-# 🌲 Eureka 서비스 등록 플로우
+# Eureka 서비스 등록 플로우
 
 Eureka는 Spring Cloud 기반 MSA에서 서비스 디스커버리(Discovery)를 제공하는 핵심 컴포넌트입니다.  
 다음 흐름은 서비스가 Eureka 서버에 등록되고, 이후 주기적으로 헬스 체크를 수행하며 상태를 유지하는 과정을 나타냅니다.
 
 ---
 
-## ✅ 등록 절차 요약
+## 등록 절차 요약
 
 | 단계 | 설명 |
 |------|------|
@@ -19,7 +19,7 @@ Eureka는 Spring Cloud 기반 MSA에서 서비스 디스커버리(Discovery)를 
 
 ---
 
-## 🌐 기본 Eureka 서버 주소
+## 기본 Eureka 서버 주소
 
 ```
 
@@ -29,7 +29,7 @@ Eureka는 Spring Cloud 기반 MSA에서 서비스 디스커버리(Discovery)를 
 
 ---
 
-## 🔄 등록 흐름도 (Mermaid)
+## 등록 흐름도 (Mermaid)
 
 ```mermaid
 flowchart TD
@@ -65,7 +65,7 @@ flowchart TD
 
 ---
 
-## ⚙️ 설정 예시 (클라이언트 `application.yml`)
+##  설정 예시 (클라이언트 `application.properties`)
 
 ```yaml
 eureka.client.service-url.defaultZone=http://localhost:8761/eureka
@@ -78,25 +78,11 @@ spring.application.name=auth-service
 
 ---
 
-## 🧠 개발 포인트
+## 개발 포인트
 
 * `@EnableEurekaServer` → 서버 측에 선언
 * 클라이언트에서는 서비스 이름(`spring.application.name`)을 기반으로 Eureka에 등록됨
 * `heartbeat` 주기는 기본 30초, `lease-expiration`은 90초 (설정 가능)
 
 ---
-
-## 🔎 대시보드 기능
-
-* 등록된 서비스 목록 조회
-* 헬스 상태 표시 (UP / DOWN)
-* 인스턴스 수, IP, 포트 정보 확인 가능
-
----
-
-## 📈 확장 가능성
-
-* 다중 인스턴스(Eureka Cluster) 구성
-* Zone / Region 분산 설정
-* 서비스 간 로드밸런싱 연동 (Spring Cloud LoadBalancer)
 
